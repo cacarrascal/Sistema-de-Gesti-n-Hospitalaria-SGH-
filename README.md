@@ -1,69 +1,64 @@
-# Sistema de Gestión Hospitalaria (SGH)
+# Sistema de Gestion Hospitalaria (SGH)
 
-Sistema de gestión hospitalaria desarrollado en Python con Programación Orientada a Objetos para Google Colab. Interfaz con tema oscuro.
+Sistema de gestion hospitalaria desarrollado en Python con Programacion Orientada a Objetos para Google Colab. Interfaz con tema oscuro.
 
-## Características
+## Caracteristicas
 
-- **Gestión de Pacientes**: Registrar, consultar, listar y actualizar datos de pacientes
-- **Gestión de Médicos**: Administrar especialidades y médicos
-- **Gestión de Citas**: Programar, consultar, cancelar citas médicas
-- **Registro Clínico**: Registrar consultas médicas y ver historial de pacientes
-- **Análisis de Datos**: Estadísticas hospitalarias
+- **Gestion de Pacientes**: Registrar, consultar, listar y actualizar datos de pacientes
+- **Gestion de Medicos**: Administrar especialidades y medicos
+- **Gestion de Citas**: Programar, consultar y cancelar citas medicas
+- **Analisis de Datos**: Estadisticas hospitalarias
 
 ## Estructura del Notebook
 
-El archivo `SGH_completo.ipynb` contiene todo el código en un solo libro:
+El archivo `SGH.ipynb` contiene todo el codigo en un solo libro:
 
-1. **Montar Google Drive** - Conexión y configuración de rutas
-2. **Instalar Dependencias** - Librería ipywidgets para interfaz interactiva
-3. **Modelos de Datos** - Clases: Paciente, Medico, Cita, Consulta, etc.
-4. **Repositorios** - Capa de persistencia en archivos CSV
-5. **Servicios** - Lógica de negocio
-6. **Interfaz de Usuario** - Componentes visuales con ipywidgets (tema oscuro)
-7. **Ejecutar Aplicación** - Menu principal
+1. **Google Drive** - Montar y configurar rutas de archivos CSV
+2. **Dependencias** - Instalar ipywidgets para interfaz interactiva
+3. **Codigo Completo** - Modelos, Repositorios, Servicios y UI
 
 ## Requisitos
 
 - Cuenta de Google Drive
 - Acceso a Google Colab
-- Carpeta `SGH/datos/` en Google Drive (se crea automáticamente)
+- Carpeta `SGH/datos/` en Google Drive (se crea automaticamente)
 
-## Instalación
+## Instalacion
 
-1. Descarga el archivo `SGH_completo.ipynb`
+1. Descarga el archivo `SGH.ipynb`
 2. Abre el archivo en Google Colab
 3. Ejecuta todas las celdas (Ctrl+F9 o Runtime > Run All)
-4. La aplicación se mostrará automáticamente
+4. La aplicacion se mostrara automaticamente
 
 ## Uso
 
-### Gestión de Pacientes
-- **Registrar**: Número de documento (campo numérico), nombre, fecha de nacimiento (selector de fecha), tipo de sangre, EPS, régimen, antecedentes. Formulario se reinicia automáticamente después de registrar.
-- **Consultar**: Busque por número de documento. Botón "Limpiar" para buscar otro paciente.
-- **Listar**: Vea todos los pacientes registrados en tabla
-- **Actualizar**: Seleccione un paciente de la lista desplegable y actualice sus datos
+### Gestion de Pacientes
+- **Registrar**: Numero de documento (campo numerico), nombre, fecha de nacimiento (selector de fecha), tipo de sangre, EPS, regimen, antecedentes. Formulario se reinicia automaticamente.
+- **Consultar**: Busque por numero de documento. Boton "Limpiar" para buscar otro paciente. Fechas en formato DD/MM/AAAA.
+- **Listar**: Vea todos los pacientes en tabla. Boton "Refrescar" para actualizar.
+- **Actualizar**: Seleccione un paciente de la lista desplegable y actualice sus datos. Incluye boton "Refrescar".
 
-### Gestión de Médicos
-- **Especialidad**: Agregue nuevas especialidades médicas
-- **Médico**: Registre médicos con su especialidad, consultorio y horario
-- **Listar**: Vea todos los médicos o filtre por especialidad
+### Gestion de Medicos
+- **Especialidad**: Codigo (numerico), nombre, descripcion (placeholder: "Color")
+- **Medico**: Numero de registro, nombre, especialidad (dropdown), consultorio, horario (fecha y hora)
+- **Listar**: Vea todos los medicos o filtre por especialidad
 
-### Gestión de Citas
-- **Programar**: Asigne cita a un paciente con un médico específico
-- **Consultar/Cancelar**: Busque una cita por código y cancele si es necesario
-- **Por paciente**: Vea todas las citas de un paciente
-- **Por médico**: Vea todas las citas de un médico
+### Gestion de Citas
+- **Programar**: Seleccione paciente y medico de las listas, fecha (selector), hora (selector), motivo (placeholder: "ej. Control mensual")
+- **Consultar/Cancelar**: Busque una cita por codigo y cancele si es necesario
 
-### Registro Clínico
-- **Registrar consulta**: Registre síntomas, signos vitales, diagnóstico CIE-10 y medicamentos
-- **Historial clínico**: Vea el historial completo de un paciente
+## Navegacion
 
-### Análisis de Datos
-- **Consultas por médico**: Promedio de consultas en un periodo
-- **Diagnósticos frecuentes**: Top N diagnósticos CIE-10 más comunes
-- **Ocupación por especialidad**: Tasa de atención por especialidad
-- **Distribución EPS/Régimen**: Porcentaje de pacientes por EPS y régimen
-- **Medicamentos más recetados**: Top N medicamentos más formulados
+- Botones de navegacion con estado activo (verde = activo, gris = inactivo)
+- Al hacer clic en un modulo, el boton correspondiente se activa automaticamente
+
+## Interfaz
+
+- **Tema oscuro** con colores vibrantes
+- Diseño moderno con gradientes y sombras
+- Badges para estados de citas
+- Validacion de campos obligatorios
+- Mensajes de exito y error claramente diferenciados
 
 ## Datos
 
@@ -78,15 +73,15 @@ Los datos se almacenan en Google Drive en formato **CSV** (`/content/drive/MyDri
 
 Cada archivo CSV incluye encabezados con los nombres de las columnas.
 
-## Interfaz
+## Validaciones
 
-- **Tema oscuro** con colores vibrantes
-- Diseño moderno con gradientes y sombras
-- Iconos y badges para estados de citas
-- Validación de campos obligatorios
-- Mensajes de éxito y error claramente diferenciados
+- Numero de documento: solo permite numeros (IntText)
+- Fecha: selector de calendario (DatePicker)
+- Hora: selector de hora (TimePicker)
+- Listas desplegables: valores predefinidos y "Seleccionar..."
+- Todos los campos obligatorios son validados antes de guardar
 
-## Tecnologías
+## Tecnologias
 
 - Python 3
 - Google Colab
@@ -95,4 +90,4 @@ Cada archivo CSV incluye encabezados con los nombres de las columnas.
 
 ## Autor
 
-Proyecto de Programación Orientada a Objetos - Ingeniería de Software
+Proyecto de Programacion Orientada a Objetos - Ingenieria de Software
